@@ -1,3 +1,6 @@
+import org.sql2o.*;
+import java.util.List;
+
 public class Stylist {
     private String name;
     private int age;
@@ -7,14 +10,13 @@ public class Stylist {
     private int clientCount;
     private int id;
 
-    public Stylist(String name, int age, String idNumber, String phoneNumber, String email, int clientCount, int id) {
+    public Stylist(String name, int age, String idNumber, String phoneNumber, String email, int clientCount) {
         this.setName(name);
         this.setAge(age);
         this.setIdNumber(idNumber);
         this.setPhoneNumber(phoneNumber);
         this.setEmail(email);
         this.setClientCount(clientCount);
-        this.setId(id);
     }
 
     public String getName() {
@@ -69,12 +71,34 @@ public class Stylist {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public static List<Stylist> all() {
+      String sql = "SELECT id, name FROM stylists";
+      try(Connection con = DB.sql2o.open()) {
+        return con.createQuery(sql).executeAndFetch(Stylist.class);
+      }
+    }
+    @Override
+    public boolean equals(Object otherStylist) {
+      if (!(otherStylist instanceof Stylist)) {
+        return false;
+      } else {
+        Stylist newStylist = (Stylist) otherStylist;
+        return this.getName().equals(newStylist.getName()) && this.getId() == newStylist.getId();
+      }
     }
 
-
-
-
-
+    public void save() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "INSERT INTO stylists(name, age, idNumber, phoneNumber, email, clientCount) VALUES (:name, :age, :idNumber, :phoneNumber, :email, :clientCount)";
+        this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("age", this.age)
+        .addParameter("phoneNumber", this.phoneNumber)
+        .addParameter("idNumber", this.idNumber)
+        .addParameter("email", this.email)
+        .addParameter("clientCount", this.clientCount)
+        .executeUpdate()
+        .getKey();
+      }
+    }
 }
