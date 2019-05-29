@@ -32,6 +32,6 @@ public class ClientTest {
       assertEquals(true, Client.all().get(0).equals(clientUnderTest));
       assertEquals(true, Client.all().get(1).equals(secondClient));
     }
-    
+
 
   }

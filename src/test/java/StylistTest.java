@@ -2,6 +2,8 @@ import org.junit.Before;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
+import java.util.List;
+import java.util.Arrays;
 
 
 public class StylistTest {
@@ -42,6 +44,23 @@ public class StylistTest {
       Stylist secondStylist = new Stylist("name", 0, "idNumber", "phoneNumber", "email", 0);
       secondStylist.save();
       assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
+    }
+    @Test
+    public void save_assignsIdToObject() {
+      stylistUnderTest.save();
+      Stylist savedStylist = Stylist.all().get(0);
+      assertEquals(stylistUnderTest.getId(), savedStylist.getId());
+    }
+
+    @Test
+    public void getClients_retrievesALlClientsFromDatabase_clientsList() {
+      stylistUnderTest.save();
+      Client clientUnderTest1 = new Client("firstName", "lastName", "email", "phoneNumber", stylistUnderTest.getId());
+      clientUnderTest1.save();
+      Client clientUnderTest2 = new Client("firstName", "lastName", "email", "phoneNumber", stylistUnderTest.getId());
+      clientUnderTest2.save();
+      Client[] clients = new Client[] { clientUnderTest1, clientUnderTest2 };
+      assertTrue(stylistUnderTest.getClients().containsAll(Arrays.asList(clients)));
     }
 
 
