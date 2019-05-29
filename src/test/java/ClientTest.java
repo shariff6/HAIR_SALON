@@ -32,6 +32,11 @@ public class ClientTest {
       assertEquals(true, Client.all().get(0).equals(clientUnderTest));
       assertEquals(true, Client.all().get(1).equals(secondClient));
     }
+    public void update_updatesClientDescription_true() {
+      clientUnderTest.save();
+      clientUnderTest.update("23432343", "email@22.com");
+      assertEquals("email@22.com", Client.find(clientUnderTest.getId()).getEmail());
+    }
 
 
   }

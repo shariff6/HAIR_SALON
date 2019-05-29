@@ -72,4 +72,24 @@ public class Client {
           .getKey();
       }
     }
+    public static Client find(int id) {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "SELECT * FROM clients where id=:id";
+        Client client = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Client.class);
+        return client;
+      }
+    }
+
+    public void update(String phoneNumber, String email) {
+      try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET email = :email, phoneNumber = :phoneNumber WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("phoneNumber", phoneNumber)
+        .addParameter("email", email)
+        .addParameter("id", id)
+        .executeUpdate();
+      }
+    }
 }
