@@ -64,12 +64,21 @@ public class App {
         post("/stylists/:stylist_id/clients/:id", (request, response) -> {
           Map<String, Object> model = new HashMap<String, Object>();
           Client client = Client.find(Integer.parseInt(request.params("id")));
-          String phoneNumber = request.queryParams("phone_number");
+          String phoneNumber = request.queryParams("phoneNumber");
           String email = request.queryParams("email");
           Stylist stylist = Stylist.find(client.getStylistId());
           client.update(phoneNumber, email);
           String url = String.format("/stylists/%d/clients/%d", stylist.getId(), client.getId());
           response.redirect(url);
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+        get("/stylists/:stylist_id/clients/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          Stylist stylist = Stylist.find(Integer.parseInt(request.params(":stylist_id")));
+          Client client = Client.find(Integer.parseInt(request.params(":id")));
+          model.put("stylist", stylist);
+          model.put("client", client);
+          model.put("template", "templates/client.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
