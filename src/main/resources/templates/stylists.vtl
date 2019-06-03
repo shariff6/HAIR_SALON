@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>HAIR SALON STYLISTS</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Phone Number</th>
+        <th>Number Of Clients</th>
+      </tr>
+    </thead>
+    <tbody>
+      #foreach ($stylist in $stylists)
+      <tr>
+        <td>$stylist.getName()</td>
+        <td>$stylist.getPhoneNumber()</td>
+        <td>$stylist.getClients().size()</td>
+        <td><a href="/stylists/$stylist.getId()" class="btn btn-info">View Stylists</a></td>
+      </tr>
+      #end
+    </tbody>
+  </table>
+</div>
+<a href="/stylists/new-stylists">Add New Stylist</a>

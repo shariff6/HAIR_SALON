@@ -1,0 +1,287 @@
+<style>
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background: #F1F3FA;
+}
+body {
+  overflow-x:hidden;
+}
+#mainNav {
+  background-color: darkslategrey;
+  color:white;
+}
+#mainNav .navbar-brand {
+  color: #fed136;
+  font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
+}
+
+
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
+
+
+footer {
+  text-align: center;
+  background-color: white;
+}
+.ft{
+  padding-left:22px;
+  padding-right:31px;
+}
+
+footer span.copyright {
+  font-size: 90%;
+  line-height: 40px;
+  text-transform: none;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color:blak;
+}
+
+footer ul.quicklinks {
+  font-size: 90%;
+  line-height: 40px;
+  margin-bottom: 0;
+  text-transform: none;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+
+ul.social-buttons li a {
+  font-size: 20px;
+  line-height: 40px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  color: white;
+  border-radius: 100%;
+  outline: none;
+  background-color: #212529;
+}
+
+ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
+  background-color: #fed136;
+}
+.content{
+   margin-top:60px;
+ }
+
+
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  display:block;
+    margin:auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}
+
+</style>
+
+<div class="container content">
+    <div class="row profile">
+      <div class="col-md-3">
+        <div class="profile-sidebar position-fixed">
+          <!-- SIDEBAR USERPIC -->
+          <div class="profile-userpic">
+            <img src="https://cdn4.vectorstock.com/i/1000x1000/93/38/logo-for-a-beauty-salon-or-procedures-for-hair-vector-15799338.jpg" class="img-responsive" alt="">
+          </div>
+          <!-- END SIDEBAR USERPIC -->
+          <!-- SIDEBAR USER TITLE -->
+          <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+              $client.getFirstName() $client.getLastName()
+            </div>
+            <div class="profile-usertitle-job">
+              Phone Number : $client.getPhoneNumber()
+              <br>
+              Email : $client.getEmail()
+              <br>
+              Stylist : $stylist.getName()
+            </div>
+          </div>
+          <!-- END SIDEBAR USER TITLE -->
+          <!-- SIDEBAR BUTTONS -->
+          <div class="profile-userbuttons">
+            <a href="mailto:$client.getEmail()?Subject=Hello%20again" target="_top" class="btn btn-info btn-sm">Message</button>
+            <a class="btn btn-info" onclick="showClientForm()" id="show-button">Modify Information</a>
+          </div>
+          <!-- END SIDEBAR BUTTONS -->
+          <!-- SIDEBAR MENU -->
+          <div class="profile-usermenu sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="#" target="_blank">
+							<i class="fa fa-check"></i>
+							Add/Modify Appointment </a>
+              </li>
+              <li class="nav-item">
+                <form class="" action="/stylists/$client.getStylistId()/clients/$client.getId()/delete" method="post">
+                <a class="nav-link" href="#" onclick="this.parentNode.submit()">
+							<i class="fa fa-flag"></i>
+
+              Delete</a>
+              </form>
+              </li>
+            </ul>
+          </div>
+          <!-- END MENU -->
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="profile-content">
+            <form action="/stylists/$client.getStylistId()/clients/$client.getId()" method="post" id="client-update-form" style="display:none;">
+              <h3>Edit Client Contact Info</h3>
+              <div class="form-group">
+                <label for="sel1">Select Stylist:</label>
+                <select class="form-control" id="stylistId" name="stylistId">
+
+                  #foreach ($stylist in $stylists)
+                    <option value= "$stylist.getId()">$stylist.getName()</option></li>
+                  #end
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input id="phoneNumber" name="phoneNumber" type="text" class="form-control" value = "$client.getPhoneNumber()">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" value="$client.getEmail()" name="email" type="email" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-info">Update Client</button>
+            </form>
+            <div class="row">
+              <h2 style="  font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;text-align:center;">Client Appointments</h2>
+
+            </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+
+  $(document).ready(function(){
+    $("#show-button").click(function(){
+      $(this).hide(200);
+      $("#client-update-form").show(200);
+    });
+  });
+  </script>
