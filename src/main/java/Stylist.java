@@ -11,60 +11,64 @@ public class Stylist {
     private int id;
 
     public Stylist(String name, int age, String idNumber, String phoneNumber, String email, int clientCount) {
-        this.setName(name);
-        this.setAge(age);
-        this.setIdNumber(idNumber);
-        this.setPhoneNumber(phoneNumber);
-        this.setEmail(email);
-        this.setClientCount(clientCount);
-    }
-
-    public String getName() {
-        return name;
+        this.name = name;
+        this.age = age;
+        this.idNumber = idNumber;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.clientCount = clientCount;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getIdNumber() {
-        return idNumber;
     }
 
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getClientCount() {
-        return clientCount;
-    }
-
     public void setClientCount(int clientCount) {
         this.clientCount = clientCount;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getClientCount() {
+        return clientCount;
     }
 
     public int getId() {

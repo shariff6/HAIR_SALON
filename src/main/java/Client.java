@@ -42,6 +42,30 @@ public class Client {
         return stylistId;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setStylistId(int stylistId) {
+        this.stylistId = stylistId;
+    }
+
     public static List<Client> all() {
       String sql = "SELECT id, firstName, stylistId FROM clients";
       try(Connection con = DB.sql2o.open()) {

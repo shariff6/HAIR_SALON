@@ -70,6 +70,7 @@ public class App {
           Stylist stylist = Stylist.find(client.getStylistId());
           client.update(phoneNumber, email, stylistId);
           String url = String.format("/stylists/%d/clients/%d", stylist.getId(), client.getId());
+          model.put("template", "templates/client.vtl");
           response.redirect(url);
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
@@ -98,6 +99,19 @@ public class App {
           stylist.delete();
           model.put("stylist", stylist);
           model.put("template", "templates/stylists.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+        get("/clients", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          model.put("clients", Client.all());
+          model.put("template", "templates/clients.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+        get("/clients/new-clients", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          model.put("stylists", Stylist.all());
+          model.put("clients", Client.all());
+          model.put("template", "templates/new-client.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
