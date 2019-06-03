@@ -31,6 +31,10 @@ public class StylistTest {
         assertEquals("name", stylistUnderTest.getName());
     }
     @Test
+    public void getEmail_StylistInstantiatesWithName_name() {
+        assertEquals("email", stylistUnderTest.getEmail());
+    }
+    @Test
     public void all_returnsAllInstancesOfStylist_true() {
       stylistUnderTest.save();
       Stylist secondStylist = new Stylist("name", 0, "idNumber", "phoneNumber", "email", 0);

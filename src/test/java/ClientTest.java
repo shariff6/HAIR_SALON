@@ -37,6 +37,10 @@ public class ClientTest {
       clientUnderTest.update("23432343", "email@22.com", clientUnderTest.getId());
       assertEquals("email@22.com", Client.find(clientUnderTest.getId()).getEmail());
     }
-
+    public void save_savesClientEmailPhoneNumberandStylist_true() {
+      clientUnderTest.save();
+      assertEquals("email@22.com", Client.find(clientUnderTest.getId()).getEmail());
+      assertEquals("23432343", Client.find(clientUnderTest.getId()).getPhoneNumber());
+    }
 
   }
